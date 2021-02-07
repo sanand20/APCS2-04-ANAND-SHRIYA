@@ -34,7 +34,5 @@ public class Recursion{
     }
     return sqrt(num, (num / n + n)/2);
   }
-  public static void main (String[] args){
-    System.out.println(countNoDoubleLetterWords(2,""));
-  }
+  
 }
