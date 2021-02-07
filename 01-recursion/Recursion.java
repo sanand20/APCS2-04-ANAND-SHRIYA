@@ -7,18 +7,22 @@ public class Recursion{
   }
   public static long countNoDoubleLetterWords(int length,String word){
     if (length == 0){
-      return 26;
+      return 1;
     }
-    else{
+
 
     for (int i = 0; i<26; i++){
       char x = (char)('a'+ i);
-      if (word.charAt(word.length()-2) != x){
-        return countNoDoubleLetterWords(length-1, word + x) *25;
+      if (word.length()==0){
+        return countNoDoubleLetterWords(length-1, word + x) *26;
 
       }
+      else if (word.charAt(word.length()-1) != x){
+        return countNoDoubleLetterWords(length-1, word + x) *25;
     }
   }
+    return countNoDoubleLetterWords(length-1, word);
+
   }
 
   public static double sqrt(int num){
@@ -31,6 +35,6 @@ public class Recursion{
     return sqrt(num, (num / n + n)/2);
   }
   public static void main (String[] args){
-    System.out.println(countNoDoubleLetterWords(3));
+    System.out.println(countNoDoubleLetterWords(3,""));
   }
 }
