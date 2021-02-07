@@ -25,10 +25,10 @@ public class Recursion{
 
   }
 
-  public static double sqrt(int num){
+  public static double sqrt(double num){
     return sqrt(num, 1.0);
   }
-  public static double sqrt(int num, double n){
+  public static double sqrt(double num, double n){
     if (Math.abs(n * n - num)<= 0.00001 * num){
       return n;
     }
