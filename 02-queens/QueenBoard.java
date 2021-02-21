@@ -83,7 +83,7 @@ public boolean solve(int col){
   if (col == size){
     return true;
   }
-  for (int row = 1; row < size; row++){
+  for (int row = 0; row < size; row++){
     if(addQueen(row,col)){
       if(solve(col+1)){
         return true;
@@ -94,7 +94,27 @@ public boolean solve(int col){
   return false;
 }
 
-  public int countSolutions(){
-    return countSolutions(0,0);
+ public int countSolutions(){
+    return countSolutions(0);
   }
+
+
+
+
+    public int countSolutions(int col){
+    if (col == size){
+      return 1;
+    }
+    int counter = 0;
+    for (int row = 0; row < size; row++){
+      if(addQueen(row,col)){
+          counter += countSolutions(col+1);
+          removeQueen(row,col);
+        }
+
+      }
+    return counter;
+  }
+
+
 }
