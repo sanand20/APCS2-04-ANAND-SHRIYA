@@ -63,23 +63,45 @@ public String toString(){
   String result = "";
   for (int i = 0; i<size; i++){
     for (int j = 0; j<size; j++){
-      if (board[i][j]== -1){
+      if(j!= size -1){
+        if (board[i][j]== -1){
         result += "Q ";
       }
       else{
         result += "_ ";
       }
     }
+    else{
+      if (board[i][j]== -1){
+      result += "Q";
+    }
+    else{
+      result += "_";
+    }
+
+    }
+    }
+
+  if(i!=size-1){
     result += "\n";
+  }
   }
   return result;
 }
 
 public boolean solve(){
+  for(int i = 0; i<size; i++){
+    for (int j = 0; j<size; j++){
+      if(board[i][j]!=0){
+    throw new IllegalStateException();
+      }
+    }
+  }
   return solve(0);
 }
 
 public boolean solve(int col){
+
   if (col == size){
     return true;
   }
@@ -95,13 +117,20 @@ public boolean solve(int col){
 }
 
  public int countSolutions(){
-    return countSolutions(0);
+   for(int i = 0; i<size; i++){
+     for (int j = 0; j<size; j++){
+       if(board[i][j]!=0){
+     throw new IllegalStateException();
+       }
+     }
+   }  return countSolutions(0);
   }
 
 
 
 
     public int countSolutions(int col){
+
     if (col == size){
       return 1;
     }
