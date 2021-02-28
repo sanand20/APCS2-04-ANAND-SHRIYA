@@ -48,4 +48,45 @@ import java.util.*;
 
 
 
+
+        private void wait(int millis){
+             try {
+                 Thread.sleep(millis);
+             }
+             catch (InterruptedException e) {
+             }
+         }
+
+        public void setAnimate(boolean b){
+            animate = b;
+        }
+
+        public static void clearTerminal(){
+            //erase terminal
+            System.out.println("\033[2J");
+        }
+        public static void gotoTop(){
+          //go to top left of screen
+          System.out.println("\033[1;1H");
+        }
+
+        /*Return the string that represents the maze.
+         It should look like the text file with some characters replaced.
+        */
+        public String toString(){
+          String result = "";
+          for (int i = 0; i<maze.length; i++){
+            for (int j = 0; j<maze[0].length; j++){
+              result += maze[i][j];
+            }
+            result += "\n";
+          }
+          return result;
+        }
+
+        /*Wrapper Solve Function returns the helper function
+          Note the helper function has the same name, but different parameters.
+          Since the constructor exits when the file is not found or is missing an E or S, we can assume it exists.
+        */
+
       }
