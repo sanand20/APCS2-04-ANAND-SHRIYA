@@ -144,6 +144,40 @@ import java.util.*;
             }
 
           
+
+            else if (leftworks){
+
+              if (maze[row][col] == '@'){
+                maze[row][col] = '.';
+                counter += solve(row, col-1) - 1;
+              }
+            }
+            else if (rightworks){
+
+              if (maze[row][col] == '@'){
+                maze[row][col] = '.';
+                counter += solve(row, col + 1) - 1;
+              }
+            }
+            else if (upworks){
+
+              if (maze[row][col] == '@'){
+                maze[row][col] = '.';
+                counter += solve(row-1, col) - 1;
+              }
+            }
+            else if (downworks){
+
+              if (maze[row][col] == '@'){
+                maze[row][col] = '.';
+                counter += solve(row+1,col) - 1;
+              }
+            }
+            //COMPLETE SOLVE
+            if (!anshere && !leftworks && !rightworks && !upworks && !downworks){
+              return -2;
+            }
+            else{return counter;} //so it compiles
         }
 
       }
