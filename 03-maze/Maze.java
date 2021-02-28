@@ -99,7 +99,7 @@ import java.util.*;
                 int y = 0;
                 for (int i = 0; i<maze.length; i++){
                   for (int j = 0; j<maze[0].length; j++){
-                    if(maze[i][j]=="S"){
+                    if(maze[i][j]=='S'){
                       x = i;
                       y = j;
                     }
@@ -107,6 +107,43 @@ import java.util.*;
                 }
                 return solve(x,y);
         }
+        /*
+          Recursive Solve function:
 
-      
+          A solved maze has a path marked with '@' from S to E.
+
+          Returns the number of @ symbols from S to E when the maze is solved,
+          Returns -1 when the maze has no solution.
+
+          Postcondition:
+            The 'S' is replaced with '@'
+            The 'E' remain the same
+            All visited spots that were not part of the solution are changed to '.'
+            All visited spots that are part of the solution are changed to '@'
+        */
+        private int solve(int row, int col){ //you can add more parameters since this is private
+            //automatic animation! You are welcome.
+            if(animate){
+                gotoTop();
+                System.out.println(this);
+                wait(50);
+            }
+
+            int counter = 0;
+
+
+
+            boolean leftworks = row<maze.length && col-1>=0 && maze[row][col - 1] != '#' &&  maze[row][col - 1] != '.' &&  maze[row][col - 1] != 'S';
+            boolean rightworks = row<maze.length && col+1<maze[0].length && maze[row][col + 1] != '#' && maze[row][col + 1] != '.' && maze[row][col + 1] != 'S';
+            boolean upworks = row<maze.length && col-1>=0 && maze[row-1][col] != '#' && maze[row-1][col] != '.'  && maze[row-1][col] != 'S';
+            boolean downworks = row<maze.length && col+1<maze[0].length && maze[row+1][col] != '#' && maze[row+1][col] != '.' && maze[row+1][col] != 'S';
+
+            boolean anshere = maze[row+1][col] == 'E' || maze[row-1][col] == 'E'  || maze[row][col+1] == 'E'  || maze[row][col-1] == 'E' ;
+            if (anshere){
+              return 1;
+            }
+
+          
+        }
+
       }
