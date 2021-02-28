@@ -146,7 +146,26 @@ import java.util.*;
               return 1;
             }
 
-            
+            if (leftempty){
+
+                maze[row][col - 1] = '@';
+                counter+= solve(row,col-1) + 1 ;
+            }
+            else if (rightempty){
+
+                maze[row][col + 1] = '@';
+                counter += solve(row, col+1) + 1;
+            }
+            else if (upempty){
+
+                maze[row-1][col] = '@';
+                counter += solve(row-1, col) + 1;
+            }
+            else if (downempty){
+
+                maze[row+1][col] = '@';
+                counter += solve(row+1, col) + 1;
+            }
 
             else if (leftworks){
 
