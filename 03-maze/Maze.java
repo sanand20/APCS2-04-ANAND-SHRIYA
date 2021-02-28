@@ -131,7 +131,10 @@ import java.util.*;
 
             int counter = 0;
 
-
+            boolean leftempty = row<maze.length && col-1>=0 && maze[row][col - 1] == ' ';
+            boolean rightempty = row<maze.length && col+1<maze[0].length && maze[row][col + 1] == ' ';
+            boolean upempty = row<maze.length && row-1>=0 && maze[row-1][col] == ' ';
+            boolean downempty = row<maze.length && row+1<maze[0].length && maze[row+1][col] == ' ';
 
             boolean leftworks = row<maze.length && col-1>=0 && maze[row][col - 1] != '#' &&  maze[row][col - 1] != '.' &&  maze[row][col - 1] != 'S';
             boolean rightworks = row<maze.length && col+1<maze[0].length && maze[row][col + 1] != '#' && maze[row][col + 1] != '.' && maze[row][col + 1] != 'S';
@@ -143,7 +146,7 @@ import java.util.*;
               return 1;
             }
 
-          
+            
 
             else if (leftworks){
 
