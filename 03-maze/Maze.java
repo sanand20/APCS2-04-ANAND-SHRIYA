@@ -88,5 +88,25 @@ import java.util.*;
           Note the helper function has the same name, but different parameters.
           Since the constructor exits when the file is not found or is missing an E or S, we can assume it exists.
         */
+        public int solve(){
+                //only clear the terminal if you are running animation
+                if(animate){
+                  clearTerminal();
+                }
+                //start solving at the location of the s.
+                //return solve(???,???);
+                int x = 0;
+                int y = 0;
+                for (int i = 0; i<maze.length; i++){
+                  for (int j = 0; j<maze[0].length; j++){
+                    if(maze[i][j]=="S"){
+                      x = i;
+                      y = j;
+                    }
+                  }
+                }
+                return solve(x,y);
+        }
 
+      
       }
