@@ -144,7 +144,33 @@ public class MazeGenerator{
           generator(maze, rows, cols, startrow-1, startcol);
         }
       }
-      
+      else if (!ehere){
+        erow = startrow;
+        ecol = startcol;
+        ehere = true;
+      }
+
+        else if (backtrack(startrow,startcol-1)){
+          maze[startrow][startcol]= '.';
+          thismaze = maze;
+          generator(maze, rows, cols, startrow,startcol-1);
+        }
+        else if (backtrack(startrow,startcol+1)){
+          maze[startrow][startcol]= '.';
+          thismaze = maze;
+          generator(maze, rows, cols, startrow,startcol+1);
+        }
+        else if (backtrack(startrow-1,startcol)){
+          maze[startrow][startcol]= '.';
+          thismaze = maze;
+          generator(maze, rows, cols, startrow-1,startcol);
+        }
+        else if (backtrack(startrow+1,startcol)){
+          maze[startrow][startcol]= '.';
+          thismaze = maze;
+          generator(maze, rows, cols, startrow+1,startcol);
+        }
+
     }
 
 }
