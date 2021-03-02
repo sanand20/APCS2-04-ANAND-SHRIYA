@@ -30,6 +30,28 @@ public class MazeGenerator{
     }
     return false;
   }
-    /
+    public static boolean backtrack(int row, int col){
+      if (thismaze[row][col]==' '){
+        return true;
+      }
+      return false;
+    }
+    public static void generate(char[][] maze, int rows, int cols, int startrow, int startcol){
+      double srow = Math.random()*(maze.length-2) + 1;
+      double scol = Math.random()*(maze[0].length-2) +1;
+      generator(maze, rows, cols,(int)srow, (int)scol);
+      maze[(int)startrow][(int)startcol]= 'S';
+      maze[erow][ecol]='E';
+      thismaze = maze;
+      for (int i = 0; i<maze.length; i++){
+        for (int j = 0; j<maze[0].length; j++){
+            if (maze[i][j]=='.'){
+              maze[i][j]=' ';
+            }
+          }
+        }
+
+    }
+
 
 }
