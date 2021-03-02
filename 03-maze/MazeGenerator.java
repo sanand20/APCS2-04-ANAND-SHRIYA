@@ -1,38 +1,35 @@
 public class MazeGenerator{
-  private char[][]maze;
-  private int erow;
-  private int ecol;
-  private int rownum;
-  private int colnum;
-  private boolean ehere;
-  public MazeGenerator(int row, int col){
-    maze = new char[row][col];
-    rownum = row;
-    colnum = col;
+  public static int erow;
+  public static int ecol;
+  public static int rownum;
+  public static int colnum;
+  public static boolean ehere;
+  public static char[][] thismaze;
 
 
-    for (int i = 0; i<maze.length; i++){
-      for (int j = 0; j<maze[0].length; j++){
-        if(i == 0  || i == maze.length-1 || j == 0  || j == maze[0].length-1){
-          maze[i][j]='@';
-        }
-          maze[i][j] = '#';
-        }
-      }
 
-
-  }
-
-  public String toString(){
-    String result = "";
-    for (int i = 0; i<maze.length; i++){
-      for (int j = 0; j<maze[0].length; j++){
-        result += maze[i][j];
-      }
-      result += "\n";
+  public static boolean works(int row, int col){
+    if (row<=0 || row>=thismaze.length-1 || col<=0 || col>=thismaze[0].length-1 || thismaze[row][col]=='S'){
+      return false;
     }
-    return result;
+    int spaces = 0;
+    if (col>0 && (thismaze[row][col - 1]==' ' || thismaze[row][col - 1]=='.')){
+      spaces++;
+    }
+    if (col<thismaze[0].length-1 && (thismaze[row][col + 1]==' ' || thismaze[row][col + 1]=='.')){
+      spaces++;
+    }
+    if (row > 0 && (thismaze[row-1][col]==' ' || thismaze[row-1][col]=='.')){
+      spaces++;
+    }
+    if (row<thismaze.length-1 && (thismaze[row+1][col]==' ' || thismaze[row+1][col]=='.')){
+      spaces++;
+    }
+    if (spaces<2 &&(thismaze[row][col]!='.' && thismaze[row][col]!='S')){
+      return true;
+    }
+    return false;
   }
-
+    
 
 }
