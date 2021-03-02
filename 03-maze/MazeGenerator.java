@@ -52,6 +52,99 @@ public class MazeGenerator{
         }
 
     }
+    public static void generator(char[][] maze, int rows, int cols, int startrow, int startcol){
+      thismaze = maze;
+      double place = Math.random()*5 -1;
+      if ((int)place == 0){
+        if (works(startrow,startcol-1)){
+          maze[startrow][startcol-1] = ' ';
+          thismaze=maze;
+          generator(maze, rows, cols, startrow, startcol-1);
+        }
+        else if (works(startrow,startcol+1)){
+          maze[startrow][startcol+1] = ' ';
+          thismaze=maze;
+          generator(maze, rows, cols, startrow, startcol+1);
+        }
+        else if (works(startrow-1,startcol)){
+          maze[startrow-1][startcol] = ' ';
+          thismaze=maze;
+          generator(maze, rows, cols, startrow-1, startcol);
+        }
+        else if (works(startrow+1,startcol)){
+          maze[startrow+1][startcol] = ' ';
+          thismaze=maze;
+          generator(maze, rows, cols, startrow+1, startcol);
+        }
+      }
+      if ((int)place == 1){
+        if (works(startrow,startcol+1)){
+          maze[startrow][startcol+1] = ' ';
+          thismaze=maze;
+          generator(maze, rows, cols, startrow, startcol+1);
+        }
+        else if (works(startrow-1,startcol)){
+          maze[startrow-1][startcol] = ' ';
+          thismaze=maze;
+          generator(maze, rows, cols, startrow-1, startcol);
+        }
+        else if (works(startrow+1,startcol)){
+          maze[startrow+1][startcol] = ' ';
+          thismaze=maze;
+          generator(maze, rows, cols, startrow+1, startcol);
+        }
+        else if (works(startrow,startcol-1)){
+          maze[startrow][startcol-1] = ' ';
+          thismaze=maze;
+          generator(maze, rows, cols, startrow, startcol-1);
+        }
+      }
+      if ((int)place == 2){
+        if (works(startrow-1,startcol)){
+          maze[startrow-1][startcol] = ' ';
+          thismaze=maze;
+          generator(maze, rows, cols, startrow-1, startcol);
+        }
+        else if (works(startrow+1,startcol)){
+          maze[startrow+1][startcol] = ' ';
+          thismaze=maze;
+          generator(maze, rows, cols, startrow+1, startcol);
+        }
+        else if (works(startrow,startcol-1)){
+          maze[startrow][startcol-1] = ' ';
+          thismaze=maze;
+          generator(maze, rows, cols, startrow, startcol-1);
+        }
+        else if (works(startrow,startcol+1)){
+          maze[startrow][startcol+1] = ' ';
+          thismaze=maze;
+          generator(maze, rows, cols, startrow, startcol+1);
+        }
+      }
 
+      if ((int)place == 3){
+        if (works(startrow+1,startcol)){
+          maze[startrow+1][startcol] = ' ';
+          thismaze=maze;
+          generator(maze, rows, cols, startrow+1, startcol);
+        }
+        else if (works(startrow,startcol-1)){
+          maze[startrow][startcol-1] = ' ';
+          thismaze=maze;
+          generator(maze, rows, cols, startrow, startcol-1);
+        }
+        else if (works(startrow,startcol+1)){
+          maze[startrow][startcol+1] = ' ';
+          thismaze=maze;
+          generator(maze, rows, cols, startrow, startcol+1);
+        }
+        else if (works(startrow-1,startcol)){
+          maze[startrow-1][startcol] = ' ';
+          thismaze=maze;
+          generator(maze, rows, cols, startrow-1, startcol);
+        }
+      }
+      
+    }
 
 }
