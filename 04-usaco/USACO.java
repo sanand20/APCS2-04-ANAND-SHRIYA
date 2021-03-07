@@ -7,6 +7,27 @@ public class USACO{
   private static int N, M, T, R1, C1, R2, C2;
   private static char[][] silverland;
 
+  public static int bronze(String filename){
+    readfilebronze(filename);
+    int ans = 0;
+    for (int i = 0; i< Nb; i++){
+      boolean ishighest = true;
+      int row = instructions[i][0] - 1;
+      int col = instructions[i][1] - 1;
+      int dig = instructions[i][2];
+      for (int x = row; x<3; x++){
+        for (int y = col; y<3; y++){
+          if (landb[x][y]>landb[row][col]){
+            ishighest = false;
+          }
+        }
+      }
+
+    }
+    System.out.println(toString(landb));
+    return ans;
+  }
+
 
   public static void readfilebronze( String filename){
     try{
@@ -41,6 +62,7 @@ public class USACO{
   }
 
 
+
   public static String toString(int[][] array){
     String result = "";
     for (int i = 0; i<array.length; i++){
@@ -52,6 +74,7 @@ public class USACO{
     }
     return result;
   }
+
 
   public static void main (String[] args){
     readfilesilver("silverprob.txt");
