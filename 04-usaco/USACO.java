@@ -60,6 +60,12 @@ public class USACO{
   }
 
 
+  public static boolean works(int row, int col){
+    if (row<0 || row>=N || col<0 || col>=M || silverland[row][col]=='*'){
+      return false;
+    }
+    return true;
+  }
   public static void readfilebronze( String filename){
     try{
       File f = new File(filename);
