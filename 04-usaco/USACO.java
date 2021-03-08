@@ -56,7 +56,7 @@ public class USACO{
         }
       }
     }
-    return ans;
+    return ans*72*72;
   }
 
   public static int silver(String filename){
