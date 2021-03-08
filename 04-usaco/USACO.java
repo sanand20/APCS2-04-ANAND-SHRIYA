@@ -94,7 +94,6 @@ public class USACO{
   }
 
 
-
   public static String toString(int[][] array){
     String result = "";
     for (int i = 0; i<array.length; i++){
@@ -106,7 +105,16 @@ public class USACO{
     }
     return result;
   }
-
+  public static String toString(char[][] array){
+    String result = "";
+    for (int i = 0; i<array.length; i++){
+      for (int j = 0; j<array[0].length; j++){
+        result+=array[i][j];
+      }
+      result += "\n";
+    }
+    return result;
+  }
 
   public static void main (String[] args){
     readfilesilver("silverprob.txt");
