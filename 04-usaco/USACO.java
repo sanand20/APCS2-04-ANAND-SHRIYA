@@ -22,7 +22,39 @@ public class USACO{
           }
         }
       }
-
+      if (!ishighest){
+        int z = landb[row][col]-dig;
+        for (int x = row; x<3; x++){
+          for (int y = col; y<3; y++){
+            if (landb[x][y]-dig < landb[row][col]-dig && landb[x][y]>landb[row][col]){
+              landb[x][y] = landb[row][col];
+            }
+            if (landb[x][y]-dig > landb[row][col]-dig){
+              landb[x][y] = landb[x][y] - dig;
+            }
+          }
+        }
+      }
+      else{
+        int z = landb[row][col]-dig;
+        for (int x = row; x<3; x++){
+          for(int y = col; y<3; y++){
+            if (landb[row][col]-dig>0){
+              landb[x][y] = z;
+            }
+            else{
+              landb[x][y] = 0;
+            }
+          }
+        }
+      }
+    }
+    for (int i = 0; i<R; i++){
+      for (int j = 0; j<C; j++){
+        if (E-landb[i][j] > 0){
+          ans += (E-landb[i][j]);
+        }
+      }
     }
     System.out.println(toString(landb));
     return ans;
