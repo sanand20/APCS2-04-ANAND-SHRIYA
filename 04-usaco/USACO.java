@@ -59,7 +59,43 @@ public class USACO{
     return ans;
   }
 
+  public static int silver(String filename){
+    int[][] tracker1 = new int[N][M];
+    tracker1[R1][C1]=1;
+    int[][] tracker2 = new int[N][M];
+    for (int i = 0; i<T; i++){
+      for (int x = 0; x<N; x++){
+        for (int y = 0; y<M; y++){
+         if(silverland[x][y]!='*'){
+          if(works(x-1,y)){
+            tracker2[x][y] += tracker1[x-1][y];
+          }
+          if(works(x+1,y)){
+            tracker2[x][y] += tracker1[x+1][y];
+          }
+          if(works(x,y-1)){
+            tracker2[x][y] += tracker1[x][y-1];
+          }
+          if(works(x,y+1)){
+            tracker2[x][y] += tracker1[x][y+1];
+          }
+        }
+        }
+      }
+      for (int x = 0; x<N; x++){
+        for (int y = 0; y<M; y++){
+          tracker1[x][y]=tracker2[x][y];
+        }
+      }
+      for (int x = 0; x<N; x++){
+        for (int y = 0; y<M; y++){
+          tracker2[x][y]=0;
+        }
+      }
+    }
 
+    return tracker1[R2][C2];
+  }
   public static boolean works(int row, int col){
     if (row<0 || row>=N || col<0 || col>=M || silverland[row][col]=='*'){
       return false;
@@ -90,8 +126,7 @@ public class USACO{
           instructions[i][j] = row.nextInt();
         }
       }
-      System.out.println(R);
-      System.out.println(toString(instructions));
+
     }
     catch(FileNotFoundException e){
       System.out.println("File not found:"+ filename);
@@ -115,13 +150,13 @@ public class USACO{
         }
 
       }
-      System.out.println(toString(silverland));
+
       R1 = wholefile.nextInt()-1;
       C1 = wholefile.nextInt()-1;
       R2 = wholefile.nextInt()-1;
       C2 = wholefile.nextInt()-1;
 
-      System.out.println(C2);
+
 
     }
     catch(FileNotFoundException e){
@@ -154,7 +189,7 @@ public class USACO{
   public static void main (String[] args){
     readfilesilver("silverprob.txt");
     System.out.println(silver("silverprob.txt"));
-    //System.out.println(bronze("bronzeprob.txt"));
+    System.out.println(bronze("bronzeprob.txt"));
   }
 
 }
