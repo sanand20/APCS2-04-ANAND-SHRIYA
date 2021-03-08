@@ -56,7 +56,6 @@ public class USACO{
         }
       }
     }
-    System.out.println(toString(landb));
     return ans;
   }
 
@@ -93,6 +92,36 @@ public class USACO{
     }
   }
 
+  public static void readfilesilver( String filename){
+    try{
+      File f = new File(filename);
+      Scanner wholefile = new Scanner(f);
+      Scanner line1 = new Scanner (wholefile.nextLine());
+      N = line1.nextInt();
+      M = line1.nextInt();
+      T = line1.nextInt();
+      silverland = new char[N][M];
+
+      for (int i = 0; i<N; i++){
+        String row = (wholefile.nextLine());
+        for (int j = 0; j <row.length(); j++){
+          silverland[i][j] = row.charAt(j);
+        }
+
+      }
+      System.out.println(toString(silverland));
+      R1 = wholefile.nextInt()-1;
+      C1 = wholefile.nextInt()-1;
+      R2 = wholefile.nextInt()-1;
+      C2 = wholefile.nextInt()-1;
+
+      System.out.println(C2);
+
+    }
+    catch(FileNotFoundException e){
+      System.out.println("File not found: "+ filename);
+    }
+  }
 
   public static String toString(int[][] array){
     String result = "";
