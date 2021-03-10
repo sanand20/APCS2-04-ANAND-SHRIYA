@@ -2,8 +2,8 @@ import java.util.*;
 public class Preliminary{
 
   public static int partition ( int [] data, int start, int end){
-        //Math.random() * (end-start+2) + start;
-        int pivot = 4;
+
+        int pivot = (int) Math.random() * (end-start+1) + start;
         int p = data[pivot];
         ArrayList<Integer> less = new ArrayList<Integer>();
         ArrayList<Integer> more = new ArrayList<Integer>();
@@ -37,7 +37,7 @@ public class Preliminary{
         return result;
       }
   public static void main (String[] args){
-    int [] test = {999,999,999,0,1,2,3,4,999,999,999};
+    int [] test = {999,999,999,4,3,2,1,0,999,999,999};
     System.out.println(partition(test, 3, 7));
     System.out.println(toString(test));
   }
