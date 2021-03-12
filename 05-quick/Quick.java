@@ -2,7 +2,7 @@ import java.util.*;
 public class Quick{
   public static int partition ( int [] data, int start, int end){
 
-        int pivot = (int) Math.random() * (end-start+1) + start;
+        int pivot = (int) (Math.random() * (end-start+1) + start);
         int p = data[pivot];
         ArrayList<Integer> less = new ArrayList<Integer>();
         ArrayList<Integer> more = new ArrayList<Integer>();
@@ -18,15 +18,16 @@ public class Quick{
         }
         }
 
-        for (int i = start; i-start< more.size(); i++){
-          data[i] = more.get(i-start);
+        for (int i = start; i-start< less.size(); i++){
+          data[i] = less.get(i-start);
         }
-        data[start+more.size()] = p;
-        for (int i = start + more.size()+1; i <= end; i++){
-          data[i] = less.get(i-start-more.size()-1);
+        data[start+less.size()] = p;
+        for (int i = start + less.size()+1; i <= end; i++){
+          data[i] = more.get(i-start-less.size()-1);
         }
-        return more.size()+start;
+        return less.size()+start;
       }
+
   public static String toString(int [] data){
         String result = "";
         for (int i = 0; i<data.length; i++){
@@ -37,12 +38,27 @@ public class Quick{
       }
 
   public static int quickselect(int []data, int k){
-    partition(data, 0, data.length);
-    return 1;
+    int start = 0;
+    int end = data.length-1;
+    int run = partition(data, start, end);
+
+    while (run!=k){
+      if (run < k){
+        start = run+1;
+        run = partition (data, start, end);
+      }
+      if (run > k){
+        end = run-1;
+        run = partition (data, start, end);
+      }
+    }
+
+    return data[k];
    }
+
 
    public static void main (String[] args){
      int [] test = {999,999,999,4,3,2,1,0,999,999,999};
-     System.out.println(quickselect(test, 3)); 
+     System.out.println(quickselect(test, 5));
    }
 }
