@@ -12,42 +12,49 @@ public class USACO{
     int ans = 0;
     for (int i = 0; i< Nb; i++){
       boolean ishighest = true;
-      int row = instructions[i][0] - 1;
-      int col = instructions[i][1] - 1;
+      int row = (instructions[i][0] - 1);
+      int col = (instructions[i][1] - 1);
       int dig = instructions[i][2];
-      for (int x = row; x<3; x++){
-        for (int y = col; y<3; y++){
+      for (int x = row; x<row+3; x++){
+        for (int y = col; y<col+3; y++){
           if (landb[x][y]>landb[row][col]){
             ishighest = false;
           }
         }
       }
       if (!ishighest){
-        int z = landb[row][col]-dig;
-        for (int x = row; x<3; x++){
-          for (int y = col; y<3; y++){
-            if (landb[x][y]-dig < landb[row][col]-dig && landb[x][y]>landb[row][col]){
-              landb[x][y] = landb[row][col];
+        int z = landb[row][col];
+
+        for (int x = row; x<row+3; x++){
+          for (int y = col; y<col+3; y++){
+
+            if (landb[x][y]-dig < z && landb[x][y]>z){
+              landb[x][y] = z;
             }
-            if (landb[x][y]-dig > landb[row][col]-dig){
+            if (landb[x][y]-dig > z){
               landb[x][y] = landb[x][y] - dig;
             }
+
           }
         }
+
       }
       else{
         int z = landb[row][col]-dig;
-        for (int x = row; x<3; x++){
-          for(int y = col; y<3; y++){
-            if (landb[row][col]-dig>0){
-              landb[x][y] = z;
-            }
-            else{
-              landb[x][y] = 0;
-            }
-          }
+        int k = landb[row][col];
+        for (int x = row; x<row+3; x++){
+          for(int y = col; y<col+3; y++){
+             if (z<= landb[x][y]){
+               landb[x][y]=z;
+             }
+             else{
+               landb[x][y]=landb[x][y]-dig;
+             }
+
         }
       }
+    }
+      System.out.println(toString(landb));
     }
     for (int i = 0; i<R; i++){
       for (int j = 0; j<C; j++){
@@ -56,7 +63,8 @@ public class USACO{
         }
       }
     }
-    return ans*72*72;
+
+    return ans;
   }
 
   public static int silver(String filename){
@@ -92,6 +100,7 @@ public class USACO{
           tracker2[x][y]=0;
         }
       }
+
     }
 
     return tracker1[R2][C2];
@@ -111,6 +120,10 @@ public class USACO{
       C = line1.nextInt();
       E = line1.nextInt();
       Nb = line1.nextInt();
+      System.out.println(R);
+      System.out.println(C);
+      System.out.println(E);
+      System.out.println(Nb);
       landb = new int[R][C];
       instructions = new int[Nb][3];
       for (int i = 0; i<R; i++){
@@ -187,9 +200,13 @@ public class USACO{
   }
 
   public static void main (String[] args){
-    readfilesilver("silverprob.txt");
-    System.out.println(silver("silverprob.txt"));
-    System.out.println(bronze("bronzeprob.txt"));
+      //System.out.println(toString(landb));
+      //readfilebronze("btest.txt");
+      //System.out.println(toString(landb));
+
+    //readfilesilver("silverprob.txt");
+  //  System.out.println(silver("silverprob.txt"));
+    System.out.println(bronze("btest.txt"));
   }
 
 }
