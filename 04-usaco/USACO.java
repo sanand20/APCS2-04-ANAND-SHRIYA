@@ -15,46 +15,17 @@ public class USACO{
       int row = (instructions[i][0] - 1);
       int col = (instructions[i][1] - 1);
       int dig = instructions[i][2];
+      int max = landb[row][col];
       for (int x = row; x<row+3; x++){
         for (int y = col; y<col+3; y++){
           if (landb[x][y]>landb[row][col]){
             ishighest = false;
+            max = landb[x][y];
           }
         }
       }
-      if (!ishighest){
-        int z = landb[row][col];
 
-        for (int x = row; x<row+3; x++){
-          for (int y = col; y<col+3; y++){
-
-            if (landb[x][y]-dig < z && landb[x][y]>z){
-              landb[x][y] = z;
-            }
-            if (landb[x][y]-dig > z){
-              landb[x][y] = landb[x][y] - dig;
-            }
-
-          }
-        }
-
-      }
-      else{
-        int z = landb[row][col]-dig;
-        int k = landb[row][col];
-        for (int x = row; x<row+3; x++){
-          for(int y = col; y<col+3; y++){
-             if (z<= landb[x][y]){
-               landb[x][y]=z;
-             }
-             else{
-               landb[x][y]=landb[x][y]-dig;
-             }
-
-        }
-      }
-    }
-      System.out.println(toString(landb));
+        helpermethod(landb,row,col,dig);
     }
     for (int i = 0; i<R; i++){
       for (int j = 0; j<C; j++){
@@ -66,7 +37,9 @@ public class USACO{
 
     return ans;
   }
-
+  public static void helpermethod(int[][] arr, int row, int col, int dig) {
+  
+  }
   public static int silver(String filename){
     int[][] tracker1 = new int[N][M];
     tracker1[R1][C1]=1;
