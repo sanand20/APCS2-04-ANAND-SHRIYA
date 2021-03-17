@@ -35,7 +35,7 @@ public class USACO{
       }
     }
 
-    return ans;
+    return ans*72*72;
   }
   public static void helpermethod(int[][] arr, int row, int col, int dig) {
     int[][] minigrid = new int[3][3];
@@ -131,10 +131,7 @@ public class USACO{
       C = line1.nextInt();
       E = line1.nextInt();
       Nb = line1.nextInt();
-      System.out.println(R);
-      System.out.println(C);
-      System.out.println(E);
-      System.out.println(Nb);
+
       landb = new int[R][C];
       instructions = new int[Nb][3];
       for (int i = 0; i<R; i++){
@@ -217,7 +214,7 @@ public class USACO{
 
     //readfilesilver("silverprob.txt");
   //  System.out.println(silver("silverprob.txt"));
-    System.out.println(bronze("testbig.txt"));
+    //System.out.println(bronze("testbig.txt"));
   }
 
 }
