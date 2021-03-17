@@ -38,8 +38,46 @@ public class USACO{
     return ans;
   }
   public static void helpermethod(int[][] arr, int row, int col, int dig) {
-  
+    int[][] minigrid = new int[3][3];
+    for (int i = 0; i < 3; i++){
+      for (int j = 0; j < 3; j++){
+        minigrid[i][j] = arr[i+row][j+col];
+      }
+    }
+
+
+    int max = minigrid[0][0];
+    for(int i = 0; i < minigrid.length; i++){
+      for(int j = 0; j < minigrid[i].length; j++){
+        if(max < minigrid[i][j]){
+          max = minigrid[i][j];
+        }
+      }
+    }
+    int elevation = 0;
+    for(int i = 0; i < minigrid.length; i++){
+      for(int j = 0; j < minigrid[i].length; j++){
+        if(minigrid[i][j]==max){
+          minigrid[i][j] -= dig;
+          elevation = minigrid[i][j];
+        }
+      }
+    }
+    for(int i = 0; i < minigrid.length; i++){
+      for(int j = 0; j < minigrid[i].length; j++){
+        if(minigrid[i][j] > elevation){
+          minigrid[i][j] = elevation;
+        }
+      }
+    }
+    for(int i = 0; i < 3; i++){
+      for(int j = 0; j < 3; j++){
+        arr[i+row][j+col] = minigrid[i][j];
+      }
+    }
   }
+
+
   public static int silver(String filename){
     int[][] tracker1 = new int[N][M];
     tracker1[R1][C1]=1;
@@ -179,7 +217,7 @@ public class USACO{
 
     //readfilesilver("silverprob.txt");
   //  System.out.println(silver("silverprob.txt"));
-    System.out.println(bronze("btest.txt"));
+    System.out.println(bronze("testbig.txt"));
   }
 
 }
