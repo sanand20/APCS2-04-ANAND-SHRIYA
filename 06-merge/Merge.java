@@ -39,4 +39,12 @@ public class Merge{
       val++;
     }
   }
+  public static String toString(int[] data){
+    result = "";
+    for (int i = 0; i<data.length-1; i++){
+      result += data[i] + ", "
+    }
+    result += data[data.length-1];
+    return result;
+  }
 }
