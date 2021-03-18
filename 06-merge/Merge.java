@@ -18,5 +18,25 @@ public class Merge{
     for (int i = 0; i<size2; i++){
       hiarr[j] = data [mid + 1 + j];
     }
+    int i = 0;
+    int j = 0;
+    int val = lo;
+    while (i<size && j<size2){
+      if (loarr[i]<=hiarr[j]){
+        data[val] = loarr[i];
+        i++;
+      }
+      else {
+        data[val] = hiarr[j];
+        j++;
+      }
+      val++;
+    }
+
+    while (j<size2){
+      data[val] = hiarr[j];
+      j++;
+      val++;
+    }
   }
 }
