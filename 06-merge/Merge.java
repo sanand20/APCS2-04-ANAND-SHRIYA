@@ -1,10 +1,13 @@
 public class Merge{
+  public static void mergesort(int[]data){
+    mergesort(data, 0, data.length-1);
+  }
   public static void mergesort(int[] data, int lo, int hi){
     if (lo < hi) {
-        int x = lo+ (hi-l)/2;
-        sort(arr, lo, x);
-        sort(arr, x+ 1, hi);
-        merge(arr, lo, x, hi);
+        int x = lo+ (hi-lo)/2;
+        mergesort(data, lo, x);
+        mergesort(data, x+ 1, hi);
+        merge(data, lo, x, hi);
     }
   }
   public static void merge(int[] data, int lo, int mid, int hi){
@@ -16,12 +19,12 @@ public class Merge{
       loarr[i] =  data[lo+i];
     }
     for (int i = 0; i<size2; i++){
-      hiarr[j] = data [mid + 1 + j];
+      hiarr[i] = data [mid + 1 + i];
     }
     int i = 0;
     int j = 0;
     int val = lo;
-    while (i<size && j<size2){
+    while (i<size1 && j<size2){
       if (loarr[i]<=hiarr[j]){
         data[val] = loarr[i];
         i++;
@@ -32,7 +35,11 @@ public class Merge{
       }
       val++;
     }
-
+    while (i < size1) {
+        data[val] = loarr[i];
+        i++;
+        val++;
+    }
     while (j<size2){
       data[val] = hiarr[j];
       j++;
@@ -40,11 +47,16 @@ public class Merge{
     }
   }
   public static String toString(int[] data){
-    result = "";
+    String result = "";
     for (int i = 0; i<data.length-1; i++){
-      result += data[i] + ", "
+      result += data[i] + ", ";
     }
     result += data[data.length-1];
     return result;
+  }
+  public static void main(String[] args){
+    int[] test = {38, 27, 43, 3,9, 82, 10};
+    mergesort(test, 0, test.length-1);
+    System.out.println (toString(test));
   }
 }
