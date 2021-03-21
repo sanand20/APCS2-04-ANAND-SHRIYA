@@ -29,7 +29,12 @@ public class MyDeque<E>{
 
         size++;
   }
-  public void addLast(E element){ }
+  public void addLast(E element){
+    canAdd();
+    head = (head + size + 1) % data.length;
+    data[head] = element;
+    size++
+  }
   public E removeFirst(){ }
   public E removeLast(){ }
   public E getFirst(){ }
