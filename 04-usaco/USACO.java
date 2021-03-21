@@ -79,6 +79,7 @@ public class USACO{
 
 
   public static int silver(String filename){
+    readfilesilver(filename);
     int[][] tracker1 = new int[N][M];
     tracker1[R1][C1]=1;
     int[][] tracker2 = new int[N][M];
@@ -213,7 +214,7 @@ public class USACO{
       //System.out.println(toString(landb));
 
     //readfilesilver("silverprob.txt");
-  //  System.out.println(silver("silverprob.txt"));
+    //System.out.println(silver("silverprob.txt"));
     //System.out.println(bronze("testbig.txt"));
   }
 
