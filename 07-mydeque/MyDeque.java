@@ -17,10 +17,26 @@ public class MyDeque<E>{
     result += data[data.length-1]+ "}";
     return result;
   }
-  public void addFirst(E element){ }
+  public void addFirst(E element){
+    canAdd();
+        if (head == 0) {
+            head = data.length -
+            data[head] = element;
+        } else {
+            head == (head-1)%data.length;
+            data[head] = element;
+        }
+
+        size++;
+  }
   public void addLast(E element){ }
   public E removeFirst(){ }
   public E removeLast(){ }
   public E getFirst(){ }
   public E getLast(){ }
+  private void canAdd(E element){
+    if (data.length == size){
+      throw new IllegalStateException("no space left");
+    }
+  }
 }
