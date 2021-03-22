@@ -28,27 +28,49 @@ public class MyDeque<E>{
   }
   public void addFirst(E element){
     canAdd();
-    data[start] = element;
-    start = (start+1)%data.length;
-    size++;
+    if (start == 0){
+      start = data.length - 1;
+      data[start] = element;
+    }
+    else{
+      start--;
+      data[start] = element;
+    }
+
   }
   public void addLast(E element){
     canAdd();
-    data[end] = element;
-    end = (end-1)%data.length;
+    if (end == data.length-1){
+      end = 0;
+
+    }
+    else{
+      end++;
+      data[end] = element;
+    }
     size++;
 
   }
   public E removeFirst(){
     canRemove();
     E result = data[start];
-    start = (start-1)%data.length;
+    if (start == data.length - 1){
+      start = 0;
+    }
+    else{
+      start++;
+    }
     size--;
     return result;
   }
   public E removeLast(){
     E result = data[end];
-    end = (end+1)%data.length;
+    if (end == 0){
+      end = data.length-1;
+    }
+    else{
+      end--;
+    }
     size--;
     return result;
   }
