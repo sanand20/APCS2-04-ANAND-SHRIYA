@@ -46,9 +46,20 @@ public class MyDeque<E>{
     size--;
     return result;
   }
-  public E removeLast(){ }
-  public E getFirst(){ }
-  public E getLast(){ }
+  public E removeLast(){
+    E result = data[end];
+    end = (end+1)%data.length;
+    size--;
+    return result;
+  }
+  public E getFirst(){
+    E result = data[start];
+    return result;
+  }
+  public E getLast(){
+    E result = data[end];
+    return result;
+  }
   private void canAdd(){
     if (data.length == size){
       throw new IllegalStateException("no space left");
