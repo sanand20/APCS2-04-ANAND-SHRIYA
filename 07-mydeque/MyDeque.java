@@ -60,9 +60,10 @@ public class MyDeque<E>{
       throw new NullPointerException("element is null");
     }
     canAdd();
+
     if (end == data.length-1){
       end = 0;
-
+      data[end] = element;
     }
     else{
       end++;
@@ -72,7 +73,6 @@ public class MyDeque<E>{
 
   }
   public E removeFirst(){
-    canRemove();
     E result = data[start];
     if (start == data.length - 1){
       start = 0;
@@ -104,13 +104,20 @@ public class MyDeque<E>{
   }
   private void canAdd(){
     if (data.length == size){
-      throw new IllegalStateException("no space left");
+      resize();
     }
   }
-  private void canRemove() {
-        if (size == 0) {
-            throw new NoSuchElementException("deque is empty");
-        }
+
+ private void resize(){
+    E[] temp = (E[]) new Object[size() * 2 + 1];
+    int index = start;
+    for (int i=0; i<size; i++){
+      temp[i] = data[(start+i) % data.length];
+
     }
+    start=0;
+    end=size;
+    data=temp;
+  }
 
 }
