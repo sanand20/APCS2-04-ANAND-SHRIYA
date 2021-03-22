@@ -128,6 +128,7 @@ public class MyDeque<E>{
     return result;
   }
 
+
   public E getFirst(){
     E result = data[start];
     return result;
@@ -142,16 +143,27 @@ public class MyDeque<E>{
     }
   }
 
- private void resize(){
-    E[] temp = (E[]) new Object[size() * 2 + 1];
-    int index = start;
-    for (int i=0; i<size; i++){
-      temp[i] = data[(start+i) % data.length];
+  private void resize(){
+    int tempsize = 10;
 
+    if(data.length != 0){
+      tempsize = 1 + size * 2;
     }
-    start=0;
-    end=size;
-    data=temp;
-  }
 
+    @SuppressWarnings("unchecked")
+    E[] temparray = (E[])new Object[tempsize];
+    int x = data.length-start;
+
+    for(int i = 0; i < x; i++){
+      temparray[temparray.length/2 + i] = data[start + i];
+    }
+
+    for(int j = 0; j < start; j++){
+      temparray[temparray.length/2 + x + j] = data[j];
+    }
+
+    start = temparray.length/2;
+    data = temparray;
+    end = start + size;
+  }
 }
