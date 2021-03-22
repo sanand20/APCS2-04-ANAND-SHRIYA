@@ -1,10 +1,19 @@
+import java.util.*;
 public class MyDeque<E>{
   private E[] data;
   private int size, start, end;
 
-  public MyDeque(){  }
+  public MyDeque(){
+    data = (E[])new Object[10];
+    start = 0;
+    end = 0;
+    size = 0;
+  }
   public MyDeque(int initialCapacity){
-    data = new int [initialCapacity];
+    data = (E[])new Object[initialCapacity];
+    start = 0;
+    end = 0;
+    size = 0;
   }
   public int size(){
     return size;
@@ -19,36 +28,36 @@ public class MyDeque<E>{
   }
   public void addFirst(E element){
     canAdd();
-        if (start == 0) {
-            start = data.length -
-            data[start] = element;
-        } else {
-            start--;
-            data[(start-1)%data.length] = element;
-        }
-
-        size++;
+    data[start] = element;
+    start = (start+1)%data.length;
+    size++;
   }
   public void addLast(E element){
     canAdd();
+    data[end] = element;
+    end = (end-1)%data.length;
     size++;
-    data[(start + size)%data.length] = element;
 
   }
   public E removeFirst(){
     canRemove();
-
-        int result = data[start];
-        start = (start + 1) % data.length;
-        size--;
-        return result;
+    E result = data[start];
+    start = (start-1)%data.length;
+    size--;
+    return result;
   }
   public E removeLast(){ }
   public E getFirst(){ }
   public E getLast(){ }
-  private void canAdd(E element){
+  private void canAdd(){
     if (data.length == size){
       throw new IllegalStateException("no space left");
     }
   }
+  private void canRemove() {
+        if (size == 0) {
+            throw new NoSuchElementException("deque is empty");
+        }
+    }
+
 }
