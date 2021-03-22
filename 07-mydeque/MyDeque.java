@@ -20,14 +20,31 @@ public class MyDeque<E>{
   }
   public String toString(){
     String result = "{";
-    for (int i = 0; i<data.length-1; i++){
-      result += data[i] + ", ";
+    if (size >0){
+      if (start<end){
+        for (int i = start; i<end; i++){
+        result += data[i] + ", ";
+        }
+        result += data[end];
+      }
+      else {
+        for (int i = start; i<data.length; i++){
+        result += data[i] + ", ";
+        }
+        for (int i = 0; i<end; i++){
+        result += data[i] + ", ";
+        }
+        result+= data[end];
+      }
     }
-    result += data[data.length-1]+ "}";
+    result += "}";
     return result;
   }
   public void addFirst(E element){
     canAdd();
+    if (element == null){
+      throw new NullPointerException("element is null");
+    }
     if (start == 0){
       start = data.length - 1;
       data[start] = element;
@@ -39,6 +56,9 @@ public class MyDeque<E>{
 
   }
   public void addLast(E element){
+    if (element == null){
+      throw new NullPointerException("element is null");
+    }
     canAdd();
     if (end == data.length-1){
       end = 0;
