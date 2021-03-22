@@ -23,26 +23,36 @@ public class MyDeque<E>{
     return size;
   }
   public String toString(){
+    if(size == 0){
+      return "{}";
+    }
+
+    if(size == 1){
+      return "{" + data[start] + "}";
+    }
+
     String result = "{";
-    if (size >0){
-      if (start<end){
-        for (int i = start; i<end; i++){
-        result += data[i] + ", ";
+
+    if(end > start){
+      for(int i = start; i <= end; i++){
+        result += data[i];
+        if(i != end){
+          result += ", ";
         }
-        result += data[end];
-      }
-      else {
-        for (int i = start; i<data.length; i++){
-        result += data[i] + ", ";
-        }
-        for (int i = 0; i<end; i++){
-        result += data[i] + ", ";
-        }
-        result+= data[end];
       }
     }
-    result += "}";
-    return result;
+    else{
+      for(int i = start; i < data.length; i++){
+        result = result + data[i] + ", ";
+      }
+      for(int j = 0; j <= end; j++){
+        result += data[j];
+        if(j != end){
+          result += ", ";
+        }
+      }
+    }
+    return result + "}";
   }
   public void addFirst(E element){
     if(element == null){
