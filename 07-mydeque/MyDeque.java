@@ -12,30 +12,37 @@ public class MyDeque<E>{
   public String toString(){
     String result = "{";
     for (int i = 0; i<data.length-1; i++){
-      result += data[i] + ", "
+      result += data[i] + ", ";
     }
     result += data[data.length-1]+ "}";
     return result;
   }
   public void addFirst(E element){
     canAdd();
-        if (head == 0) {
-            head = data.length -
-            data[head] = element;
+        if (start == 0) {
+            start = data.length -
+            data[start] = element;
         } else {
-            head == (head-1)%data.length;
-            data[head] = element;
+            start--;
+            data[(start-1)%data.length] = element;
         }
 
         size++;
   }
   public void addLast(E element){
     canAdd();
-    head = (head + size + 1) % data.length;
-    data[head] = element;
-    size++
+    size++;
+    data[(start + size)%data.length] = element;
+
   }
-  public E removeFirst(){ }
+  public E removeFirst(){
+    canRemove();
+
+        int result = data[start];
+        start = (start + 1) % data.length;
+        size--;
+        return result;
+  }
   public E removeLast(){ }
   public E getFirst(){ }
   public E getLast(){ }
