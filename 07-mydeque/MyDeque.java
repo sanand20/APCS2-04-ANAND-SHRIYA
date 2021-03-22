@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.NoSuchElementException;
 public class MyDeque<E>{
   private E[] data;
   private int size, start, end;
@@ -22,6 +22,7 @@ public class MyDeque<E>{
   public int size(){
     return size;
   }
+
   public String toString(){
     if(size == 0){
       return "{}";
@@ -54,6 +55,7 @@ public class MyDeque<E>{
     }
     return result + "}";
   }
+
   public void addFirst(E element){
     if(element == null){
       throw new NullPointerException("element null");
@@ -128,19 +130,17 @@ public class MyDeque<E>{
     return result;
   }
 
-
-  public E getFirst(){
-    E result = data[start];
-    return result;
-  }
-  public E getLast(){
-    E result = data[end];
-    return result;
-  }
-  private void canAdd(){
-    if (data.length == size){
-      resize();
+  public E getFirst() throws NoSuchElementException{
+    if(size == 0){
+      throw new NoSuchElementException("empty deque");
     }
+    return data[start];
+  }
+  public E getLast() throws NoSuchElementException{
+    if(size == 0){
+      throw new NoSuchElementException("empty deque");
+    }
+    return data[end];
   }
 
   private void resize(){
@@ -166,4 +166,6 @@ public class MyDeque<E>{
     data = temparray;
     end = start + size;
   }
+
+
 }
