@@ -1,3 +1,4 @@
+import java.util.*;
 public class Calculator{
            /*Evaluate a postfix expression stored in s.
             *Assume valid postfix notation, of ints doubles and operators separated by spaces.
@@ -32,5 +33,12 @@ public class Calculator{
                        }
          			   }
          		  }
+              return str.pop();
+           }
+
+
+           public static void main (String[] args){
+             String test = "11 3 - 4 + 2.5 *";
+             System.out.println(eval(test));
            }
        }
