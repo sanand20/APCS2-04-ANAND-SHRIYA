@@ -13,9 +13,7 @@ public class Calculator{
               try{
                 while (x.hasNext()) {
                   if (!x.hasNextDouble()){
-                    if (str.size()<2){
-                      throw new IllegalArgumentException("too many or too less operands");
-                    }
+
                     Double secNum = str.removeFirst();
                     Double firNum = str.removeFirst();
                     String op = x.next();
@@ -29,8 +27,14 @@ public class Calculator{
                     else if (op.equals("*")) {
                       str.addFirst(firNum * secNum);
                     }
-                    else {
+                    else if (op.equals("/")){
+                      if(secNum==0){
+                        throw new IllegalArgumentException("div by 0");
+                      }
                       str.addFirst(firNum / secNum);
+                    }
+                    else if (op.equals("%")){
+                      str.addFirst(firNum % secNum);
                     }
                   }
                   if (x.hasNextDouble()) {
@@ -38,7 +42,10 @@ public class Calculator{
              			}
 
          		  }
-                return str.removeFirst();
+                if (str.size()>1){
+                  throw new IllegalArgumentException("too many or too less operands");
+                }
+                  return str.removeFirst();
             }
             catch(NoSuchElementException e){
               throw new IllegalArgumentException("too many or too less operands");
