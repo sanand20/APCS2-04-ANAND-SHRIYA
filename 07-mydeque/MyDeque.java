@@ -104,7 +104,7 @@ public class MyDeque<E>{
     }
     E result = data[start];
     data[start] = null;
-    if(start == data.length-1){
+    if(start == data.length-1 && start!=end){
       start = 0;
     }
     else{
