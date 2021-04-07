@@ -108,7 +108,9 @@ public class MyDeque<E>{
       start = 0;
     }
     else{
-      start++;
+      if (start!=end){
+        start++;
+      }
     }
     size--;
     return result;
@@ -120,11 +122,13 @@ public class MyDeque<E>{
     }
     E result = data[end];
     data[end] = null;
-    if(end == 0){
+    if(end == 0 && start!=end){
       end = data.length-1;
     }
     else{
-      end--;
+      if (start != end){
+        end--;
+      }
     }
     size--;
     return result;
