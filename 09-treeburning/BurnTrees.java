@@ -54,7 +54,34 @@ public class BurnTrees{
    public void tick(){
      ticks++;
      //YOU MUST IMPLEMENT THIS
-     
+     if (!done()){
+       for (int r = 0; r < map.length; r++){
+       for (int c = 0; c<map[r].length; c++){
+         if (map[r][c]==1){
+           if (r+1<map.length&& map[r+1][c]==2){
+             map[r+1][c]=5;
+           }
+           if (r-1>=0 && map[r-1][c]==2){
+             map[r-1][c]=5;
+           }
+           if (c+1<map[r].length&& map[r][c+1]==2){
+             map[r][c+1]=5;
+           }
+           if (c-1>=0 && map[r][c-1]==2){
+             map[r][c-1]=5;
+           }
+           map[r][c]=3;
+         }
+       }
+     }
+     for (int r = 0; r < map.length; r++){
+       for (int c = 0; c<map[r].length; c++){
+         if (map[r][c]==5){
+           map[r][c]=1;
+         }
+       }
+     }
+   }
    }
 
 
