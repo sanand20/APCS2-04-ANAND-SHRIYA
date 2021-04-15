@@ -39,7 +39,10 @@ public class BurnTrees{
    */
    public boolean done(){
      //YOU MUST IMPLEMENT THIS
-    
+     if (Frontier.size()==0){
+       return true;
+     }
+     return false;
    }
 
 
