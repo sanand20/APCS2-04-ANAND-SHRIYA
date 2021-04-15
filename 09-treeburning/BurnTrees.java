@@ -82,6 +82,7 @@ public class BurnTrees{
            }
            map[r][c]=3;
            Frontier.remove();
+
      }
 
    }
