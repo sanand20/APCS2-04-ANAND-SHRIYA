@@ -39,7 +39,7 @@ public class BurnTrees{
    */
    public boolean done(){
      //YOU MUST IMPLEMENT THIS
-     
+    
    }
 
 
@@ -50,7 +50,38 @@ public class BurnTrees{
    public void tick(){
      ticks++;
      //YOU MUST IMPLEMENT THIS
+     if (!done()){
+       int iterations = Frontier.size();
+       for (int i = 0; i < iterations; i++){
+       int[] firehere = Frontier.peek();
+       int r = firehere[0];
+       int c = firehere[1];
 
+           if (r+1<map.length&& map[r+1][c]==2){
+             int [] newfire = new int[]{r+1,c};
+             map[r+1][c]=1;
+             Frontier.add(newfire);
+           }
+           if (r-1>=0 && map[r-1][c]==2){
+             int [] newfire = new int[]{r-1,c};
+             map[r-1][c]=1;
+             Frontier.add(newfire);
+           }
+           if (c+1<map[r].length&& map[r][c+1]==2){
+             int [] newfire = new int[]{r,c+1};
+             map[r][c+1]=1;
+             Frontier.add(newfire);
+           }
+           if (c-1>=0 && map[r][c-1]==2){
+             int [] newfire = new int[]{r,c-1};
+             map[r][c-1]=1;
+             Frontier.add(newfire);
+           }
+           map[r][c]=3;
+           Frontier.remove();
+     }
+
+   }
    }
 
 
