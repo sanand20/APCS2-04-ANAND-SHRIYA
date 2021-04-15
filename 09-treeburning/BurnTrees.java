@@ -6,6 +6,7 @@ public class BurnTrees{
   private static int FIRE = 1;
   private static int ASH = 3;
   private static int SPACE = 0;
+  private static Queue<int[]>Frontier;
 
 
   /*DO NOT UPDATE THIS
@@ -28,6 +29,8 @@ public class BurnTrees{
       for(int c=0; c<map[r].length; c++ )
         if(Math.random() < density)
            map[r][c]=2;
+
+
     start();//set the left column on fire.
   }
 
@@ -36,14 +39,7 @@ public class BurnTrees{
    */
    public boolean done(){
      //YOU MUST IMPLEMENT THIS
-     for (int r = 0; r < map.length; r++){
-       for (int c = 0; c<map[r].length; c++){
-         if (map[r][c]==1){
-           return false;
-         }
-       }
-     }
-     return true;
+     
    }
 
 
@@ -54,34 +50,7 @@ public class BurnTrees{
    public void tick(){
      ticks++;
      //YOU MUST IMPLEMENT THIS
-     if (!done()){
-       for (int r = 0; r < map.length; r++){
-       for (int c = 0; c<map[r].length; c++){
-         if (map[r][c]==1){
-           if (r+1<map.length&& map[r+1][c]==2){
-             map[r+1][c]=5;
-           }
-           if (r-1>=0 && map[r-1][c]==2){
-             map[r-1][c]=5;
-           }
-           if (c+1<map[r].length&& map[r][c+1]==2){
-             map[r][c+1]=5;
-           }
-           if (c-1>=0 && map[r][c-1]==2){
-             map[r][c-1]=5;
-           }
-           map[r][c]=3;
-         }
-       }
-     }
-     for (int r = 0; r < map.length; r++){
-       for (int c = 0; c<map[r].length; c++){
-         if (map[r][c]==5){
-           map[r][c]=1;
-         }
-       }
-     }
-   }
+
    }
 
 
@@ -91,11 +60,15 @@ public class BurnTrees{
   public void start(){
     //If you add more instance variables you can add more here,
     //otherwise it is complete.
+    Frontier = new ArrayDeque<int[]>();
     for(int i = 0; i < map.length; i++){
       if(map[i][0]==TREE){
         map[i][0]=FIRE;
+        int[] firehere = new int []{i,0};
+        Frontier.add(firehere);
       }
     }
+
   }
 
 
@@ -170,8 +143,8 @@ public class BurnTrees{
 
 
   public static void main(String[]args)  throws InterruptedException{
-    int WIDTH = 20;
-    int HEIGHT = 20;
+    int WIDTH = 10000;
+    int HEIGHT = 10000;
     int DELAY = 200;
     double DENSITY = .7;
     if(args.length > 1){
@@ -182,11 +155,14 @@ public class BurnTrees{
     if(args.length > 3){
       DELAY = Integer.parseInt(args[3]);
     }
-    BurnTrees b = new BurnTrees(WIDTH,HEIGHT,DENSITY);
+    BurnTrees test = new BurnTrees(WIDTH,HEIGHT,DENSITY);
+    long startTime = System.currentTimeMillis();
+    int ticks = test.run();
+    long endTime = System.currentTimeMillis();
 
-
-    System.out.println(b.animate(DELAY));//animate all screens and print the final answer
-    //System.out.println(b.outputAll());//print all screens and the final answer
+    	System.out.println("Executed in " + (endTime-startTime)/1000.0 + " seconds in " + ticks + " ticks.");
+  //System.out.println(b.animate(DELAY));//animate all screens and print the final answer
+  //System.out.println(b.outputAll());//print all screens and the final answer
   }
 
 
