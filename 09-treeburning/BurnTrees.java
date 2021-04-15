@@ -82,7 +82,6 @@ public class BurnTrees{
            }
            map[r][c]=3;
            Frontier.remove();
-
      }
 
    }
@@ -181,7 +180,7 @@ public class BurnTrees{
     int WIDTH = 10000;
     int HEIGHT = 10000;
     int DELAY = 200;
-    double DENSITY = .7;
+    double DENSITY = 1;
     if(args.length > 1){
       WIDTH = Integer.parseInt(args[0]);
       HEIGHT = Integer.parseInt(args[1]);
@@ -191,7 +190,7 @@ public class BurnTrees{
       DELAY = Integer.parseInt(args[3]);
     }
     BurnTrees test = new BurnTrees(WIDTH,HEIGHT,DENSITY);
-    long startTime = System.currentTimeMillis();
+  long startTime = System.currentTimeMillis();
     int ticks = test.run();
     long endTime = System.currentTimeMillis();
 
