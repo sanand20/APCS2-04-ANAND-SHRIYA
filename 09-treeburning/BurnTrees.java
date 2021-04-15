@@ -6,7 +6,7 @@ public class BurnTrees{
   private static int FIRE = 1;
   private static int ASH = 3;
   private static int SPACE = 0;
-  private static Queue<int[]>Frontier;
+  private Queue<int[]>Frontier;
 
 
   /*DO NOT UPDATE THIS
@@ -189,12 +189,14 @@ public class BurnTrees{
     if(args.length > 3){
       DELAY = Integer.parseInt(args[3]);
     }
-    BurnTrees test = new BurnTrees(WIDTH,HEIGHT,DENSITY);
-  long startTime = System.currentTimeMillis();
-    int ticks = test.run();
-    long endTime = System.currentTimeMillis();
+    BurnTrees b = new BurnTrees(WIDTH,HEIGHT,DENSITY);
+  long start = System.currentTimeMillis();
+  double totalTime = 0;
+  double totalSteps = 0;
+  totalSteps += b.run();
+  totalTime += System.currentTimeMillis()-start;
 
-    	System.out.println("Executed in " + (endTime-startTime)/1000.0 + " seconds in " + ticks + " ticks.");
+    	System.out.println("Executed in " + (totalTime)/1000.0 + " seconds in " + totalSteps + " ticks.");
   //System.out.println(b.animate(DELAY));//animate all screens and print the final answer
   //System.out.println(b.outputAll());//print all screens and the final answer
   }
