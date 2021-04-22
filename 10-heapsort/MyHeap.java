@@ -12,29 +12,47 @@ public class MyHeap{
    boolean leftinbounds = 2*index + 1 < size;
    boolean rightinbounds = 2*index + 2 < size;
    int temp = data[index];
-   if (leftinbounds && rightinbounds && data[index]<data[2*index + 1] && data[index]<data[2*index + 2]){
+   if ((leftinbounds&&data[index]<data[2*index + 1]) || (rightinbounds && data[index]<data[2*index + 2])){
+    if (leftinbounds && rightinbounds && data[index]<data[2*index + 1] && data[index]<data[2*index + 2]){
      if (data[2*index + 1]>data[2*index + 2]){
        data[index] = data[2*index + 1];
        data[2*index + 1] = temp;
+       index = 2*index + 1;
      }
      else{
         data[index] = data[2*index + 2];
         data[2*index + 2] = temp;
+        index = 2*index + 2;
      }
    }
    else if (leftinbounds && data[index]<data[2*index + 1]){
      data[index] = data[2*index + 1];
      data[2*index + 1] = temp;
+     index = 2*index + 1;
    }
    else if(rightinbounds && data[index]<data[2*index + 2]){
      data[index] = data[2*index + 2];
      data[2*index + 2] = temp;
+     index = 2*index + 2;
    }
+   pushDown(data, size, index);
+  }
+ }
+ public static String toString(int[] data){
+   String result = "";
+   for (int i = 0; i<data.length; i++){
+     result+= data[i] + " ";
+   }
+   return result;
  }
 
   /*Reorder the provided array to be a valid heap.
   *@param data is the array to be modified
   */
- public static void buildHeap(int[]data)//We will discuss this today:
-
+ //public static void buildHeap(int[]data);//We will discuss this today:
+ public static void main(String[] args) {
+    int [] test = new int[] {100,1,36,17,3,25,1,2,7};
+    pushDown(test,9,1);
+    System.out.println(toString(test));
+ }
 }
