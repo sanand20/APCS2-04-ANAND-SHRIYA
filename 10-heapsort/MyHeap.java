@@ -50,9 +50,29 @@ public class MyHeap{
   *@param data is the array to be modified
   */
  //public static void buildHeap(int[]data);//We will discuss this today:
- public static void main(String[] args) {
-    int [] test = new int[] {100,1,36,17,3,25,1,2,7};
-    pushDown(test,9,1);
-    System.out.println(toString(test));
+ public static void buildHeap(int[]data){
+   for (int i = data.length-1; i>=0; i--){
+     pushDown(data, data.length, i);
+   }
  }
+
+ public static void main(String[] args) {
+    int [] test = new int[] {3, 4, 5, 6, 7, 8, 9, 10};
+    pushDown(test,8,7);
+    System.out.println(toString(test));
+    pushDown(test,8,6);
+    System.out.println(toString(test));
+    pushDown(test,8,5);
+    System.out.println(toString(test));
+    pushDown(test,8,4);
+    System.out.println(toString(test));
+    pushDown(test,8,3);
+    System.out.println(toString(test));
+    pushDown(test,8,2);
+    System.out.println(toString(test));
+    pushDown(test,8,1);
+    System.out.println(toString(test));
+    pushDown(test,8,0);
+    System.out.println(toString(test));
+   }
 }
