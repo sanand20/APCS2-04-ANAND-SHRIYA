@@ -55,6 +55,23 @@ public class MyHeap{
      pushDown(data, data.length, i);
    }
  }
+ /*Swap the root node with the element at the provided index.
+   *Then push the new root down, but not past the index that it swapped with.
+   *@precondition: size is between 0 and data.length inclusive.
+   */
+  private static void remove(int[]data,int size){
+    int temp = data[0];
+    data[0] = data[size-1];
+    data[size-1] = temp;
+    pushDown(data, size, 0);
+  }
+
+  /*Sort the provided array
+   *@param data is the array to be sorted
+   */
+  public static void heapsort(int[]data){
+    
+  }//We will discuss this next time!:
 
  public static void main(String[] args) {
     int [] test = new int[] {3, 4, 5, 6, 7, 8, 9, 10};
