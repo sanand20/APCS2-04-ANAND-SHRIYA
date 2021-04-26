@@ -63,14 +63,19 @@ public class MyHeap{
     int temp = data[0];
     data[0] = data[size-1];
     data[size-1] = temp;
-    pushDown(data, size, 0);
+    pushDown(data, size-1, 0);
   }
 
   /*Sort the provided array
    *@param data is the array to be sorted
    */
   public static void heapsort(int[]data){
-    
+    buildHeap(data);
+    int j = data.length;
+    for (int i=0; i<data.length; i++){
+      remove(data,j);
+      j--;
+    }
   }//We will discuss this next time!:
 
  public static void main(String[] args) {
