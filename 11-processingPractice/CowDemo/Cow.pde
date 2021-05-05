@@ -39,7 +39,14 @@ public class Cow {
    }
     
   }
-
+  void collide(ArrayList<Cow>others){
+    for (int i = 0; i<others.size(); i++){
+      if (dist(others.get(i).x, x, others.get(i).y, y)<=radius){
+      colliding = true;
+      println("yea");
+      }
+    }
+  }
 
 
 }
