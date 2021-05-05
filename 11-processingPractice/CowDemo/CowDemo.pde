@@ -11,6 +11,7 @@ void draw() {
   for (Cow c : particles) {
     c.move();
     c.display();
+    c.collide(particles);
   }
   fill(0);
   textSize(20);
