@@ -34,6 +34,7 @@ public class Cow {
        fill(c+99999);
        ellipse(x-radius*0.5, y-radius*0.25, radius*0.5, radius*0.5);
        ellipse(x+radius*0.5, y-radius*0.25, radius*0.5, radius*0.5);
+       
        fill(255, 255, 255);
        ellipse(x-radius*0.4, y-radius*0.3, radius*0.3, radius*0.3);
        ellipse(x+radius*0.4, y-radius*0.3, radius*0.3, radius*0.3);
@@ -41,8 +42,7 @@ public class Cow {
        
        stroke(0);
        strokeWeight(3);
-       line(x-radius*0.3, y+radius*0.2, x, y+radius*0.5);
-       line(x+radius*0.3, y+radius*0.2, x, y+radius*0.5);
+       arc(x, y, radius*.75, radius * .3, 0, PI+QUARTER_PI, CHORD);
        noStroke();
        
        fill (255, 255, 255, 80);
