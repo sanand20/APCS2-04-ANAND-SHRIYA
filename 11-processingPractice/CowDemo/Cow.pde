@@ -20,8 +20,14 @@ public class Cow {
   }
   
   void move() {
-    x += dx;
-    y += dy;
+   if (selected && colliding){
+      x += 2*dx;
+      y += 2*dy;
+    }
+    else{
+      x += dx;
+      y += dy;
+    }
     if (x >= width - radius || x <= radius) dx *= -1;
     if (y >= height - radius || y <= radius) dy *= -1;
   }
@@ -58,8 +64,7 @@ public class Cow {
        c = orig;
      }
      colliding = false;
-    
-  }
+   }
 
   void click(){
    //if the mouseX and mouseY are touching this cow, change the cow somehow.
