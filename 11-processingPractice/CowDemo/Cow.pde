@@ -68,6 +68,7 @@ public class Cow {
 
   void click(){
    //if the mouseX and mouseY are touching this cow, change the cow somehow.
+   turn(30);
    if (dist(mouseX,mouseY,x, y)<=radius){
      selected = true;
    }
@@ -80,6 +81,22 @@ public class Cow {
       colliding = true;
       }
     }
+  }
+  
+    /*Write a Cow method that will modify the dx and dy
+
+   *such that the cow will change the direction it is moving
+   *counter-clockwise by the specified angle (degrees).
+   *Test this with any of the existing cow demos. (make the cows turn 30 degrees on click)
+   */
+  void turn(float angle){
+    
+    float ex = dx;
+    float ey = dy;
+    dx= ex*cos(radians(angle)) + ey*sin(radians(angle));
+    dy= ey*cos(radians(angle)) - ex*sin(radians(angle));
+    
+   
   }
 
 
