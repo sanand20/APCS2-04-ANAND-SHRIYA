@@ -68,7 +68,7 @@ public class Cow {
 
   void click(){
    //if the mouseX and mouseY are touching this cow, change the cow somehow.
-   turn(30);
+   changeSpeed(2.0);
    if (dist(mouseX,mouseY,x, y)<=radius){
      selected = true;
    }
@@ -98,6 +98,17 @@ public class Cow {
     
    
   }
-
+  
+   /*Write a Cow method that will modify the dx and dy
+   *such that the cow will add dv to the magnitude of its velocity 
+   *but maintain the same direction.
+   *Test this with any of the existing cow demos. (make the cows get 2 units faster on click to test)
+   */
+  void changeSpeed(float dv){
+    float ex = dx;
+    float ey = dy;
+    dx = cos(atan(ey/ex))*(sqrt(ex*ex+ey*ey)+dv);
+    dy = sin(atan(ey/ex))*(sqrt(ey*ey+ex*ex)+dv);
+  }
 
 }
