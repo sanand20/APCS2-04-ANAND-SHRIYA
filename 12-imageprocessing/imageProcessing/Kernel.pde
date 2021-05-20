@@ -16,7 +16,26 @@ public class Kernel {
     Calculate the convolution of r/g/b separately, and return that color
   */
   color calcNewColor(PImage img, int x, int y) {
-   
+    float r = 0;
+    float g = 0;
+    float b = 0;
+    int startx = x-1;
+    int starty = y-1;    
+    for (int row = 0; row<kernel.length; row++){
+    startx = x-1;
+      for (int col = 0; col<kernel[0].length; col++){
+        
+        color c = img.get(startx, starty);
+        float rd = red(c);
+        r += kernel[row][col] * rd;
+        float be = blue(c);
+        b += kernel[row][col] * be;
+        float gn = green(c);
+        g += kernel[row][col] * gn;
+        startx++;
+      }
+      starty++;
+    }
     return color(r,g,b);
     //Hint: start by always returning black.
     //This will let you test your apply method right away!
